@@ -1,20 +1,18 @@
 package ds1;
 
+import java.util.Arrays;
+
 public class Sort {
-    private int[] array = {-2, 45, 0, 11, -9};
 
-    public static void main(String[] args) {
-
-        Sort sort = new Sort();
-
-        sort.display();
-        sort.selectionSort(sort.array);
-        sort.bubbleSort(sort.array);
-        sort.display();
-
+    public enum SortOrder {
+        ASC,
+        DESC
     }
 
-    public void bubbleSort(int[] array) {
+    private final int[] array = {-2, 45, 0, 11, -9};
+
+
+    public void bubbleSortAsc(int[] array) {
         int temp;
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length - 1 - i; j++) {
@@ -41,7 +39,7 @@ public class Sort {
      *
      * @param array
      */
-    public void selectionSort(int[] array) {
+    public void selectionSortAsc(int[] array) {
 
         int minIndex;
         int temp;
@@ -63,10 +61,65 @@ public class Sort {
         }
     }
 
+    public void insertionSort(int[] array, SortOrder sortOrder) {
+        if (SortOrder.ASC.equals(sortOrder)) {
+            insertionSortAsc(array);
+        } else {
+            insertionSortDesc(array);
+        }
+    }
+
+    public void insertionSort(int[] array) {
+        insertionSortAsc(array);
+    }
+
+    public void insertionSortDesc(int[] array) {
+
+
+    }
+
+    /**
+     * -> The worst case time complexity of Insertion sort is O(N^2)
+     * -> The average case time complexity of Insertion sort is O(N^2)
+     * -> The time complexity of the best case is O(N).
+     * -> The space complexity is O(1)
+     *
+     * @param array
+     */
+    public void insertionSortAsc(int[] array) {
+
+        int size = array.length;
+        int j;
+        int item;
+
+        for (int i = 1; i < size; i++) {
+
+            item = array[i];
+            j = i - 1;
+
+            while (j >= 0 && array[j] > item) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = item;
+        }
+
+    }
+
     public void display() {
         System.out.println("=== === === ===");
-        for (int i : array) {
-            System.out.println(i + " ");
-        }
+        System.out.println(Arrays.toString(array));
+    }
+
+    public static void main(String[] args) {
+
+        Sort sort = new Sort();
+
+        sort.display();
+//        sort.selectionSortAsc(sort.array);
+//        sort.bubbleSortAsc(sort.array);
+        sort.insertionSort(sort.array);
+        sort.display();
+
     }
 }
