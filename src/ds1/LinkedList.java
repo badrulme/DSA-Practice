@@ -64,7 +64,7 @@ public class LinkedList {
         }
 
         currentNode.next = currentNode.next.next;
-
+        length--;
     }
 
     private void display() {
@@ -76,16 +76,26 @@ public class LinkedList {
         }
     }
 
+
+    private void bubbleSort() {
+
+    }
+
     public static void main(String[] args) {
 
         LinkedList linkedList = new LinkedList();
 
         linkedList.add(1);
-        linkedList.add(2);
+        linkedList.add(21);
+        linkedList.add(20);
+        linkedList.add(30);
         linkedList.add(4);
         linkedList.add(3, 2);
         linkedList.display();
         linkedList.delete(3);
+        linkedList.display();
+        linkedList.add(5);
+        linkedList.add(50);
         linkedList.display();
     }
 }

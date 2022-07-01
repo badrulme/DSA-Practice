@@ -39,7 +39,7 @@ public class Sort {
      *
      * @param array
      */
-    public void selectionSortAsc(int[] array) {
+    private void selectionSortAsc(int[] array) {
 
         int minIndex;
         int temp;
@@ -60,6 +60,23 @@ public class Sort {
             }
         }
     }
+
+    private void selectionSortDesc(int[] array) {
+
+    }
+
+    public void selectionSort(int[] array) {
+
+    }
+
+    public void selectionSort(int[] array, SortOrder sortOrder) {
+        if (SortOrder.ASC.equals(sortOrder)) {
+            selectionSortAsc(array);
+        } else {
+            selectionSortDesc(array);
+        }
+    }
+
 
     public void insertionSort(int[] array, SortOrder sortOrder) {
         if (SortOrder.ASC.equals(sortOrder)) {
